@@ -10,7 +10,4 @@ ReactDOM.render(
     <Provider store={store}>
         <Login />
     </Provider>
-    , document.querySelector('.root'));
-
-
-
+    , document.querySelector('.login'));
