@@ -46,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/registration", "/index*", "/static/**", "/*.js", "/*.json", "/*.ico");
+        web.ignoring().antMatchers("/registration", "/*.ico");
     }
 
     @Override
@@ -64,9 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors().configurationSource(this.corsConfigurationSource())
                 .and()
                 .authorizeRequests()
-                .antMatchers(
-                        HttpMethod.GET,
-                        "/index*", "/static/**", "/*.js", "/*.json", "/*.ico")
+                .antMatchers(HttpMethod.GET, "/index*", "/static/**", "/*.js", "/*.json", "/*.ico")
                 .permitAll()
                 .anyRequest().authenticated()
                 .and()

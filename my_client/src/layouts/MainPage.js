@@ -1,6 +1,6 @@
 import React from "react";
 import {
-    BrowserRouter as Router,
+    Router,
     Route,
     Link,
     Redirect,
@@ -10,13 +10,15 @@ import {
 
 import Login from '../components/login/Login';
 import SignUp from '../components/registration/SignUp';
+import ChatRoom from '../components/chatroom/ChatRoom';
+
 
 export default () => (
-    <Router>
+    <div className='container'>
         <Switch>
-            <Route exact path="/" component={Login}/>
-            <Route path="/login" component={Login}/>
+            <Route exact path="/" component={ChatRoom}/>
+            <Route exact path="/login" component={Login}/>
             <Route path="/registration" component={SignUp}/>
         </Switch>
-    </Router>
+    </div>
 )

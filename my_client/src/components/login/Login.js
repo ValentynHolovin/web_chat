@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { inputLoginWasChanged, inputPasswordWasChanged, userSignIn } from "./actions/LoginActions"
-import {Link} from "react-router-dom";
 
 class Login extends Component {
     constructor(props) {
@@ -61,6 +60,12 @@ class Login extends Component {
                         Enter chat
                     </Button>
                 </Form>
+                <Button
+                    variant="primary"
+                    onClick={() => { this.props.history.push('/registration') }}
+                >
+                    Sign Up
+                </Button>
             </div>
         )
     }
