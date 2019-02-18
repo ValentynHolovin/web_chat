@@ -17,7 +17,7 @@ export default () => (
     <div className='container'>
         <Switch>
             <Route exact path="/" component={ChatRoom}/>
-            <Route exact path="/login" component={Login}/>
+            <Route path="/login" component={Login}/>
             <Route path="/registration" component={SignUp}/>
         </Switch>
     </div>

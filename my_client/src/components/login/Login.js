@@ -81,8 +81,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        inputUserNameWasChanged: (userName) => dispatch(inputLoginWasChanged(userName)),
-        inputPasswordWasChanged: (password) => dispatch(inputPasswordWasChanged(password)),
+        inputUserNameWasChanged: () => dispatch(inputLoginWasChanged()),
+        inputPasswordWasChanged: () => dispatch(inputPasswordWasChanged()),
         userSignIn: (user) => dispatch(userSignIn(user)),
     };
 };

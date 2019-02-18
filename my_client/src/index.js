@@ -3,14 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 import MainPage from './layouts/MainPage';
-import {
-    Router,
-    Route,
-    Link,
-    Redirect,
-    withRouter,
-    Switch
-} from "react-router-dom";
+import { Router, Route } from "react-router-dom";
 
 import createBrowserHistory from 'history/createBrowserHistory'
 
