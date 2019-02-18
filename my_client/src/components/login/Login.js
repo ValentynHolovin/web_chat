@@ -61,7 +61,6 @@ class Login extends Component {
                         Enter chat
                     </Button>
                 </Form>
-                <Link to="/registration">Sign Up</Link>
             </div>
         )
     }

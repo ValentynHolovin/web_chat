@@ -36,6 +36,7 @@ public class UserService implements IUserService {
         if (getUserByLogin(user.getLogin()) == null && getUserByEmail(user.getEmail()) == null) {
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
             user.setRole(UserRole.USER);
+            user.setEnabled(true);
 
             return userRepository.save(user);
         }

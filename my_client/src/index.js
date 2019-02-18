@@ -8,9 +8,9 @@ import Login from "./components/login/Login";
 
 ReactDOM.render(
     <Provider store={store}>
-        <Login />
+        <MainPage />
     </Provider>
-    , document.querySelector('.container'));
+    , document.getElementById('root'));
 
 
 

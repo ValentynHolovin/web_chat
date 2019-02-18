@@ -14,7 +14,7 @@ import SignUp from '../components/registration/SignUp';
 export default () => (
     <Router>
         <Switch>
-            <Route path="/" component={SignUp}/>
+            <Route exact path="/" component={Login}/>
             <Route path="/login" component={Login}/>
             <Route path="/registration" component={SignUp}/>
         </Switch>

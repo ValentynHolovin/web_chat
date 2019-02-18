@@ -63,9 +63,4 @@ public class ChatController {
         messagingTemplate.convertAndSend("/topic/public", message);
     }
 
-    @RequestMapping(value = "/")
-    public String index() {
-        return "index";
-    }
-
 }

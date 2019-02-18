@@ -45,6 +45,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/registration", "/index*", "/static/**", "/*.js", "/*.json", "/*.ico");
+    }
+
+    @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(dataSource)
                 .usersByUsernameQuery("SELECT login, password, enabled FROM users WHERE login = ?")
@@ -59,15 +64,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors().configurationSource(this.corsConfigurationSource())
                 .and()
                 .authorizeRequests()
-                .antMatchers("/login*", "/static/**", "/*.js", "/*.json", "/*.ico").permitAll()
+                .antMatchers(
+                        HttpMethod.GET,
+                        "/index*", "/static/**", "/*.js", "/*.json", "/*.ico")
+                .permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login.html")
+                .loginPage("/")
                 .usernameParameter("login").passwordParameter("password")
                 .defaultSuccessUrl("/", true)
                 .loginProcessingUrl("/login")
-                .failureUrl("/index.html?error")
+                .failureUrl("/")
                 .permitAll()
                 .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll();
@@ -76,4 +84,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .rememberMe().tokenRepository(persistentTokenRepository())
                 .tokenValiditySeconds(86400);
     }
+
 }
