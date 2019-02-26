@@ -48,3 +48,9 @@ export const userSignUp = (user) => {
         user
     }
 };
+
+export const userSuccessfullyRegistered = () => {
+    return {
+        type: types.USER_SUCCESSFULLY_REGISTERED
+    }
+}

@@ -2,7 +2,8 @@ import * as types from '../actions/ActionTypes';
 
 const initialState = {
     userLogged: false,
-    loginError: false
+    loginError: false,
+    login: ''
 };
 
 function loginReducer(state = initialState, action) {
@@ -22,7 +23,8 @@ function loginReducer(state = initialState, action) {
         case types.INPUT_LOGIN_WAS_CHANGED:
             return updateObject(state, {
                 userLogged: false,
-                loginError: false
+                loginError: false,
+                login: action.login
             });
 
         case types.INPUT_PASSWORD_WAS_CHANGED:

@@ -8,11 +8,11 @@ function loginMiddleware({getState}) {
             case types.USER_SIGN_IN:
                 signIn(action.user)
                     .then(response => {
-                        console.log(response.statusCode);
-                        if (response.statusCode === 200) {
-                            next(userSuccessfullyLogged());
-                        } else {
+                        if (response === true) {
                             next(loginFailed());
+
+                        } else {
+                            next(userSuccessfullyLogged());
                         }
                     })
                     .catch(e => console.error(e));

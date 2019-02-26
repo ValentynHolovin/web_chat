@@ -23,6 +23,12 @@ class SignUp extends Component {
         }
     }
 
+    componentWillReceiveProps(nextProps, nextContext) {
+        if (nextProps.userRegistered) {
+            this.props.history.push('/login');
+        }
+    }
+
     loginChangeHandler = (login) => {
         this.setState( {
             login: login

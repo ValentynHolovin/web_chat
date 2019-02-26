@@ -1,14 +1,30 @@
 import React, {Component} from "react";
 import {connect} from 'react-redux';
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import { sendMessage, receiveMessage, userConnected } from "./actions/ChatRoomActions";
 
 class ChatRoom extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            currentMessage: '',
+            messages: []
+        }
+    }
+
     componentWillMount() {
         if (!this.props.userLogged) {
             this.props.history.push('/login')
         }
     }
+
+    componentDidMount() {
+        if (this.props.userLogged) {
+            this.props.userConnected();
+        }
+    }
+
 
     render() {
         return (
@@ -21,9 +37,18 @@ class ChatRoom extends Component {
 const mapStateToProps = (state, ownProps) => {
     return {
         userLogged: state.loginReducer.userLogged,
-        loginError: state.loginReducer.loginError
+        login: state.loginReducer.login,
+        receivedMessage: state.chatRoomReducer.receivedMessage
+    };
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        sendMessage: (message) => dispatch(sendMessage(message)),
+        receiveMessage: (message) => dispatch(receiveMessage(message)),
+        userConnected: () => dispatch(userConnected())
     };
 };
 
 
-export default connect(mapStateToProps)(ChatRoom);
+export default connect(mapStateToProps, mapDispatchToProps)(ChatRoom);

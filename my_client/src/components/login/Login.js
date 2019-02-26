@@ -14,11 +14,17 @@ class Login extends Component {
         }
     }
 
+    componentWillReceiveProps(nextProps, nextContext) {
+        if (nextProps.userLogged) {
+            this.props.history.push('/');
+        }
+    }
+
     loginOnChangeHandler = (login) => {
         this.setState({
             login: login
         });
-        this.props.inputUserNameWasChanged();
+        this.props.inputLoginWasChanged(login);
     };
 
     passwordOnChangeHandler = (password) => {
@@ -81,7 +87,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        inputUserNameWasChanged: () => dispatch(inputLoginWasChanged()),
+        inputLoginWasChanged: (login) => dispatch(inputLoginWasChanged(login)),
         inputPasswordWasChanged: () => dispatch(inputPasswordWasChanged()),
         userSignIn: (user) => dispatch(userSignIn(user)),
     };

@@ -1,5 +1,6 @@
 import * as types from '../actions/ActionTypes';
 import { signUp } from "../api/RegistrationApi";
+import { userSuccessfullyRegistered } from "../actions/RegistrationActions";
 
 
 function signUpMiddleware({getState}) {
@@ -8,7 +9,9 @@ function signUpMiddleware({getState}) {
             case types.USER_SIGN_UP:
                 signUp(action.user)
                     .then(response => {
-                        console.log(response);
+                        if(response) {
+                            next(userSuccessfullyRegistered())
+                        }
                     })
                     .catch(e => console.error(e));
 

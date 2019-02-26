@@ -1,8 +1,9 @@
 import * as types from './ActionTypes';
 
-export const inputLoginWasChanged = () => {
+export const inputLoginWasChanged = (login) => {
     return {
-        type: types.INPUT_LOGIN_WAS_CHANGED
+        type: types.INPUT_LOGIN_WAS_CHANGED,
+        login
     }
 };
 

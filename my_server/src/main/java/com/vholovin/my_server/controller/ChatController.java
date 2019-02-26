@@ -15,6 +15,8 @@ import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.socket.messaging.SessionConnectedEvent;
 import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 
@@ -61,6 +63,12 @@ public class ChatController {
         Message message = messageService.getGoodbyeMessage(user);
 
         messagingTemplate.convertAndSend("/topic/public", message);
+    }
+
+    @RequestMapping(value = "/loginError", method = RequestMethod.GET)
+    @ResponseBody
+    public boolean loginError() {
+        return true;
     }
 
 }
